@@ -22,6 +22,11 @@
   <%= submit_tag %>
 <% end %>
 -->
+<ul>
+  <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
 
 <%= form_with model: @user do |form| %>
   <%= form.label :username, 'Your user name here' %>
@@ -29,7 +34,7 @@
   <%= form.label :email %>
   <%= form.email_field :email, placeholder: 'example@ex.com' %>
   <%= form.label :password %>
-  <%= form.password_field :password %>
+  <%= form.password_field :password, value: @user.password %>
   <%= form.submit %>
 <% end %>
 
